@@ -1,9 +1,10 @@
 #!/bin/bash/
+
+# firewall rules only allowing traffic on port 80, 443 from outside network
 iptables -P INPUT ACCEPT
 iptables -P FORWARD ACCEPT
 iptables -P OUTPUT ACCEPT
 iptables -F
-iptables -A INPUT -p tcp --dport 22 -s 10.128.$3.0/24 -j ACCEPT
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 iptables -A INPUT -p tcp -m state --state ESTABLISHED, RELATED -j ACCEPT
